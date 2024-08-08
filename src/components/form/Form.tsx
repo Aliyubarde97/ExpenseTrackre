@@ -17,7 +17,7 @@ const Form = () => {
 
 type FormData = z.infer<typeof schema>
 
-  const {register, handleSubmit, formState:{errors, isValid}} = useForm<FormData>({resolver:zodResolver(schema)})
+  const {register, handleSubmit, formState:{errors}} = useForm<FormData>({resolver:zodResolver(schema)})
   const onsubmit = (data:FieldValues) => console.log(data);
   
   return (
@@ -68,7 +68,7 @@ type FormData = z.infer<typeof schema>
             {/* <!-- Submit Button --> */}
             <div>
               <button type="submit" 
-                disabled={!isValid} className="w-[30%] bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                 className="w-[30%] bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Submit
               </button>
             </div>
