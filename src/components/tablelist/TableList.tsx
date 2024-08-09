@@ -2,8 +2,8 @@
 
 interface expense {
     id:number,
-    Description:string,
-    Amount:number,
+    description:string,
+    amount:number,
     category:string
 }
 interface Props{
@@ -30,8 +30,8 @@ const TableList = ({expenses, onDelete }:Props) => {
                     <tbody>
 
                         {expenses.map(expense => <tr key={expense.id}>
-                            <td className="px-6 py-4 border  border-b">{expense.Description}</td>
-                            <td className="px-6 py-4 border  border-b">{expense.Amount}</td>
+                            <td className="px-6 py-4 border  border-b">{expense.description}</td>
+                            <td className="px-6 py-4 border  border-b">{expense.amount}</td>
                             <td className="px-6 py-4 border  border-b">{expense.category}</td>
                             <td onClick={() => onDelete(expense.id)} className="px-6 py-4 border border-b">
                                 <button className="text-red-500 border focus:outline-none border py-2 px-4 rounded-md hover:bg-red-700 hover:text-white ">Delete</button>
@@ -45,7 +45,7 @@ const TableList = ({expenses, onDelete }:Props) => {
                     <tfoot>
                         <tr>
                         <td>Total</td>
-                        <td>${expenses.reduce((acc, expense) => expense.Amount +acc, 0)}</td>
+                        <td>${expenses.reduce((acc, expense) => expense.amount +acc, 0)}</td>
                         <td></td>
                         <td></td>
                         </tr>
