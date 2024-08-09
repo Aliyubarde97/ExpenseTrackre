@@ -4,7 +4,7 @@ interface expense {
     id:number,
     Description:string,
     Amount:number,
-    categories:string
+    category:string
 }
 interface Props{
         expenses:expense[];
@@ -18,16 +18,6 @@ const TableList = ({expenses, onDelete }:Props) => {
     return (
         <>
             <div className="overflow-x-auto">
-                {/* <div className="max-w-md p-6 mb-6">
-                    <select id="categories"
-                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                        <option value="">Choose an option</option>
-                        <option value="Groceries">Groceries</option>
-                        <option value="Utility">Utility</option>
-                        <option value="Entertainment">Entertainment</option>
-                    </select>
-                </div> */}
                 <table className="w-full mx-auto bg-white border border-gray-300 rounded-lg shadow-md">
                     <thead className="">
                         <tr>
@@ -42,7 +32,7 @@ const TableList = ({expenses, onDelete }:Props) => {
                         {expenses.map(expense => <tr key={expense.id}>
                             <td className="px-6 py-4 border  border-b">{expense.Description}</td>
                             <td className="px-6 py-4 border  border-b">{expense.Amount}</td>
-                            <td className="px-6 py-4 border  border-b">{expense.categories}</td>
+                            <td className="px-6 py-4 border  border-b">{expense.category}</td>
                             <td onClick={() => onDelete(expense.id)} className="px-6 py-4 border border-b">
                                 <button className="text-red-500 border focus:outline-none border py-2 px-4 rounded-md hover:bg-red-700 hover:text-white ">Delete</button>
                             </td>
@@ -53,10 +43,12 @@ const TableList = ({expenses, onDelete }:Props) => {
                         
                     </tbody>
                     <tfoot>
+                        <tr>
                         <td>Total</td>
                         <td>${expenses.reduce((acc, expense) => expense.Amount +acc, 0)}</td>
                         <td></td>
                         <td></td>
+                        </tr>
                     </tfoot>
                 </table>
             </div>
